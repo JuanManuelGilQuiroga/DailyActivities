@@ -5,6 +5,14 @@ const sessionConfig = require("./infrastructure/middlewares/sessionConfig.js"); 
 const {authenticateToken} = require("./infrastructure/middlewares/authMiddleware.js");
 const { loginLimiter, getLimiter, postLimiter, deleteLimiter, putLimiter } = require("./infrastructure/middlewares/rateLimit.js");
 const UsuarioRoutes = require("./application/routes/usuarioRouter.js")
+const ActividadesRoutes = require("./application/routes/actividadesRouter.js")
+const CategoriasRoutes = require("./application/routes/categoriasRouter.js")
+const EstadisticasRoutes = require("./application/routes/estadisticasRouter.js")
+const EtiquetasRoutes = require("./application/routes/etiquetasRouter.js")
+const HitosRoutes = require("./application/routes/hitosRouter.js")
+const ObjetivosRoutes = require("./application/routes/objetivosRouter.js")
+const RecordatorioRoutes = require("./application/routes/recordatorioRouter.js")
+const ReportesRoutes = require("./application/routes/reportesRouter.js")
 
 const createServer = () => {
     const app = express(); // Crea una nueva instancia de Express
@@ -19,6 +27,14 @@ const createServer = () => {
     const server = http.createServer(app);
 
     app.use("/usuarios", UsuarioRoutes);
+    app.use("/actividades", ActividadesRoutes);
+    app.use("/categorias", CategoriasRoutes);
+    app.use("/estadisticas", EstadisticasRoutes);
+    app.use("/etiquetas", EtiquetasRoutes);
+    app.use("/hitos", HitosRoutes);
+    app.use("/objetivos", ObjetivosRoutes);
+    app.use("/recordatorio", RecordatorioRoutes);
+    app.use("/reportes", ReportesRoutes);
 
     return server; // Retorna el servidor configurado
 };
