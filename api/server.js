@@ -4,6 +4,7 @@ const corsConfig = require("./infrastructure/middlewares/corsConfig.js"); // Con
 const sessionConfig = require("./infrastructure/middlewares/sessionConfig.js"); // Configuración de sesiones
 const {authenticateToken} = require("./infrastructure/middlewares/authMiddleware.js");
 const { loginLimiter, getLimiter, postLimiter, deleteLimiter, putLimiter } = require("./infrastructure/middlewares/rateLimit.js");
+const UsuarioRoutes = require("./application/routes/usuarioRouter.js")
 
 const createServer = () => {
     const app = express(); // Crea una nueva instancia de Express
@@ -16,6 +17,8 @@ const createServer = () => {
     app.use(express.urlencoded({ extended: true })); // Middleware para analizar datos URL-encoded
     
     const server = http.createServer(app);
+
+    app.use("/usuarios", UsuarioRoutes);
 
     return server; // Retorna el servidor configurado
 };
