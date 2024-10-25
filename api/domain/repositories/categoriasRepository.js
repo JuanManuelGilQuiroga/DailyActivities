@@ -10,4 +10,13 @@ module.exports = class CategoriasRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Categoria no encontrada.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const categoria = new Categorias();
+            return await categoria.findById(id);
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 404, message: 'Categoria no encontrada.' }));
+        }
+    }
 }

@@ -10,4 +10,13 @@ module.exports = class EtiquetasRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Etiquetas no encontradas.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const etiquetas = new Etiquetas();
+            return await etiquetas.findById(id);
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 404, message: 'Etiquetas no encontradas.' }));
+        }
+    }
 }

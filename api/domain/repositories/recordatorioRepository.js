@@ -10,4 +10,13 @@ module.exports = class RecordatorioRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Recordatorios no encontrados.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const recordatorio = new Recordatorio();
+            return await recordatorio.findById(id);
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 404, message: 'Recordatorios no encontrados.' }));
+        }
+    }
 }

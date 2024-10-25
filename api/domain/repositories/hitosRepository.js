@@ -10,4 +10,13 @@ module.exports = class HitosRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Hitos no encontrados.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const hito = new Hitos();
+            return await hito.findById(id);
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 404, message: 'Hitos no encontrados.' }));
+        }
+    }
 }

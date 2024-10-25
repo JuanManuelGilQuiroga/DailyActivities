@@ -10,4 +10,13 @@ module.exports = class ReportesRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Reportes no encontrados.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const reporte = new Reportes();
+            return await reporte.findById(id);
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 404, message: 'Reportes no encontrados.' }));
+        }
+    }
 }

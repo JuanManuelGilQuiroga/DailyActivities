@@ -10,4 +10,13 @@ module.exports = class ObjetivosRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Objetivos no encontrados.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const objetivo = new Objetivos();
+            return await objetivo.findById(id);
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 404, message: 'Objetivos no encontrados.' }));
+        }
+    }
 }

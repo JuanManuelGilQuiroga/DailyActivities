@@ -11,4 +11,14 @@ module.exports = class UsuarioRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Usuarios no encontrados.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const user = new Usuario();
+            return await user.findById(id);
+        } catch (error) {
+            console.error('Error en getAll:', error);
+            throw new Error(JSON.stringify({ status: 404, message: 'Usuarios no encontrados.' }));
+        }
+    }
 }

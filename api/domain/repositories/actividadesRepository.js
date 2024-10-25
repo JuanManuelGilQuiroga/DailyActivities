@@ -10,4 +10,13 @@ module.exports = class ActividadesRepository {
             throw new Error(JSON.stringify({ status: 404, message: 'Actividades no encontradas.' }));
         }
     }
+
+    async getById(id) {
+        try {
+            const actividad = new Actividades();
+            return await actividad.findById(id);
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 404, message: 'Actividades no encontradas.' }));
+        }
+    }
 }
